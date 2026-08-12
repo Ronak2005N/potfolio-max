@@ -1,0 +1,165 @@
+/* --- Résumé dialog ---------------------------------------------------------- */
+
+.resume-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--container-padding);
+  background: rgba(17, 17, 17, 0.28);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow-y: auto;
+  cursor: default;
+}
+
+.resume-dialog-card {
+  position: relative;
+  width: min(100%, 23rem);
+  padding: clamp(2rem, 5vw, 2.75rem);
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.86),
+    rgba(255, 255, 255, 0.62)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lift), var(--shadow-inset);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  color: var(--color-ink-950);
+  text-align: center;
+}
+
+.resume-dialog-close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--color-ink-500);
+  font-family: var(--font-mono);
+  font-size: var(--text-body-lg);
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.resume-dialog-close:hover,
+.resume-dialog-close:focus-visible {
+  color: var(--color-ink-950);
+  border-color: rgba(17, 17, 17, 0.18);
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.resume-dialog-close:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.resume-dialog-overline {
+  margin: 0 0 var(--space-3);
+  color: var(--color-accent-blue);
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.resume-dialog-heading {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 500;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+
+.resume-dialog-copy {
+  margin: 0 0 var(--space-8);
+  color: var(--color-ink-500);
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-base);
+}
+
+.resume-dialog-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.resume-dialog-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    box-shadow var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-gentle);
+}
+
+.resume-dialog-action:hover,
+.resume-dialog-action:focus-visible {
+  transform: translateY(-1px);
+}
+
+.resume-dialog-action:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.resume-dialog-action-download {
+  color: #ffffff;
+  background: var(--color-ink-900);
+  box-shadow: var(--shadow-soft);
+}
+
+.resume-dialog-action-download:hover,
+.resume-dialog-action-download:focus-visible {
+  background: var(--color-ink-950);
+  box-shadow: var(--shadow-medium);
+}
+
+.resume-dialog-action-view {
+  color: var(--color-ink-900);
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(17, 17, 17, 0.16);
+}
+
+.resume-dialog-action-view:hover,
+.resume-dialog-action-view:focus-visible {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(17, 17, 17, 0.26);
+}
+
+.resume-dialog-note {
+  margin: var(--space-6) 0 0;
+  color: rgba(17, 17, 17, 0.42);
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wide);
+}

@@ -1,0 +1,277 @@
+/* --- Hidden gratitude note ------------------------------------------------ */
+
+.gratitude-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-10) 0 var(--space-24);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.gratitude-trigger-dot {
+  display: block;
+  width: 0.3125rem;
+  height: 0.3125rem;
+  border-radius: var(--radius-full);
+  background: rgba(17, 17, 17, 0.22);
+  box-shadow: 0 0 0 0 rgba(28, 93, 153, 0);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-gentle);
+}
+
+.gratitude-trigger:hover .gratitude-trigger-dot,
+.gratitude-trigger:focus-visible .gratitude-trigger-dot {
+  background: var(--color-accent-blue);
+  box-shadow: 0 0 0 0.375rem rgba(28, 93, 153, 0.14);
+  transform: scale(1.15);
+}
+
+.gratitude-trigger:focus-visible {
+  outline: none;
+}
+
+.gratitude-trigger:focus-visible .gratitude-trigger-dot {
+  outline: none;
+  box-shadow: var(--focus-ring), 0 0 0 0.375rem rgba(28, 93, 153, 0.14);
+}
+
+/* --- Overlay -------------------------------------------------------------- */
+
+.gratitude-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--container-padding);
+  background: rgba(248, 246, 241, 0.82);
+  overflow-y: auto;
+  cursor: default;
+}
+
+.gratitude-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 100% at 50% 42%,
+    rgba(17, 17, 17, 0) 52%,
+    rgba(17, 17, 17, 0.16) 100%
+  );
+}
+
+.gratitude-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Card ----------------------------------------------------------------- */
+
+.gratitude-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, var(--container-prose));
+  max-height: calc(100dvh - 2 * var(--space-8));
+  overflow-y: auto;
+  padding: clamp(2.25rem, 6vw, 4rem);
+  background: var(--color-ivory-100);
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lift);
+}
+
+.gratitude-card-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.gratitude-close {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-ink-500);
+  font-family: var(--font-mono);
+  font-size: var(--text-body-lg);
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.gratitude-close:hover,
+.gratitude-close:focus-visible {
+  color: var(--color-ink-900);
+  border-color: rgba(17, 17, 17, 0.12);
+  background-color: rgba(17, 17, 17, 0.04);
+}
+
+.gratitude-close:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* --- Letter content ------------------------------------------------------- */
+
+.gratitude-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.gratitude-overline {
+  margin: 0 0 var(--space-6);
+  color: var(--color-ink-500);
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.gratitude-heading {
+  margin: 0 0 var(--space-8);
+  max-width: 12em;
+  color: var(--color-ink-950);
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+
+.gratitude-body {
+  margin: 0 0 var(--space-5);
+  color: var(--color-ink-700);
+  font-family: var(--font-sans);
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-relaxed);
+  white-space: pre-line;
+}
+
+.gratitude-friends-label {
+  margin: var(--space-8) 0 var(--space-3);
+  color: var(--color-ink-500);
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.gratitude-friends-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+.gratitude-friend {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+}
+
+.gratitude-name {
+  color: var(--color-ink-950);
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 500;
+  font-style: italic;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+
+.gratitude-ink-underline {
+  display: block;
+  width: 6.5rem;
+  height: 0.5rem;
+  color: rgba(17, 17, 17, 0.55);
+  overflow: visible;
+}
+
+.gratitude-note {
+  margin: var(--space-4) 0 0;
+  color: var(--color-ink-500);
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wide);
+}
+
+.gratitude-closing {
+  margin: var(--space-5) 0 0;
+  color: var(--color-ink-950);
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-style: italic;
+  font-weight: 500;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  white-space: pre-line;
+}
+
+/* --- Signature ------------------------------------------------------------ */
+
+.gratitude-signature {
+  margin-top: var(--space-10);
+  align-self: flex-end;
+  padding-right: var(--space-6);
+  color: var(--color-ink-900);
+}
+
+.gratitude-signature-svg {
+  display: block;
+  width: 8.5rem;
+  height: auto;
+  overflow: visible;
+}
+
+.gratitude-signature-glyphs {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-style: italic;
+  font-weight: 500;
+  fill: var(--color-ink-900);
+  stroke: var(--color-ink-900);
+  stroke-width: 1;
+  paint-order: stroke fill;
+}
+
+.gratitude-signature-text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-900);
+}
+
+/* --- Responsive ----------------------------------------------------------- */
+
+@media (max-width: 30rem) {
+  .gratitude-card {
+    padding: clamp(1.75rem, 5vw, 2.5rem);
+  }
+}
