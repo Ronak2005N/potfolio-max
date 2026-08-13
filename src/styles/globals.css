@@ -555,138 +555,125 @@ pre {
   box-shadow: var(--shadow-soft);
 }
 
-.navbar-menu-button {
-  width: 2rem;
-  height: 2rem;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(17, 17, 17, 0.16);
-  background: rgba(255, 255, 255, 0.62);
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.24rem;
-  color: var(--color-ink-900);
-  cursor: pointer;
-  transition:
-    transform var(--duration-fast) var(--ease-gentle),
-    border-color var(--duration-fast) var(--ease-standard),
-    background-color var(--duration-fast) var(--ease-standard);
-}
-
-.navbar-menu-button:hover,
-.navbar-menu-button:focus-visible {
-  transform: translateY(-1px);
-  border-color: rgba(17, 17, 17, 0.24);
-  background: rgba(255, 255, 255, 0.78);
-}
-
-.navbar-menu-line {
-  width: 0.95rem;
-  height: 1px;
-  background: currentColor;
-  display: block;
-}
-
-.navbar-mobile-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-overlay);
-  display: grid;
-  place-items: center;
-  padding: var(--space-8);
-  background: rgba(246, 243, 238, 0.94);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.navbar-mobile-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: var(--space-5);
-  text-align: center;
-}
-
-.navbar-mobile-link {
-  color: var(--color-ink-800);
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 3.6vw, 1.625rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: var(--leading-snug);
-  transition: color var(--duration-fast) var(--ease-standard);
-}
-
-.navbar-mobile-link:hover,
-.navbar-mobile-link:focus-visible,
-.navbar-mobile-link.is-active {
-  color: var(--color-ink-950);
-}
-
-.navbar-mobile-link-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar-mobile-link-icon svg {
-  width: 1.375rem;
-  height: 1.375rem;
-  display: block;
-  transform: translateY(2px);
-}
-
-/* Joystick button (BREAK//PORT entry) — button variant of .navbar-link */
-.navbar-joystick {
-  padding-block: 0.2rem;
-  border: 0;
-  background: none;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-.navbar-mobile-link.navbar-joystick {
-  font: inherit;
-}
-
-.navbar-mobile-resume {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2rem;
-  padding-inline: var(--space-5);
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(17, 17, 17, 0.16);
-  color: var(--color-ink-900);
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.012em;
-  cursor: pointer;
-  transition:
-    border-color var(--duration-fast) var(--ease-standard),
-    background-color var(--duration-fast) var(--ease-standard);
-}
-
-.navbar-mobile-resume:hover,
-.navbar-mobile-resume:focus-visible {
-  border-color: rgba(17, 17, 17, 0.26);
-  background-color: rgba(255, 255, 255, 0.78);
-}
-
 .navbar-wordmark:focus-visible,
 .navbar-link:focus-visible,
 .navbar-resume:focus-visible,
-.navbar-menu-button:focus-visible,
-.navbar-mobile-link:focus-visible,
-.navbar-mobile-resume:focus-visible {
+.navbar-mobile-context-button:focus-visible,
+.navbar-mobile-context-item:focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
+}
+
+@media (max-width: 63.999rem) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding-inline: var(--space-2);
+  }
+
+  .navbar-wordmark {
+    flex: 1 1 0;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .navbar-mobile-context {
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .navbar-mobile-context-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-height: 2rem;
+    padding-inline: var(--space-2);
+    border: 0;
+    background: none;
+    color: var(--color-ink-950);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.008em;
+    line-height: 1;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .navbar-mobile-context-label {
+    display: inline-flex;
+    position: relative;
+  }
+
+  .navbar-mobile-context-title {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .navbar-mobile-context-caret {
+    width: 0.75rem;
+    height: 0.75rem;
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  .navbar-mobile-context-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 11rem;
+    padding: var(--space-2);
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: var(--radius-lg);
+    background: rgba(250, 247, 242, 0.96);
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: var(--z-dropdown);
+  }
+
+  .navbar-mobile-context-item {
+    display: block;
+    width: 100%;
+    padding-block: var(--space-1);
+    padding-inline: var(--space-2);
+    border: 0;
+    background: none;
+    color: var(--color-ink-800);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.008em;
+    text-align: left;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition:
+      color var(--duration-fast) var(--ease-standard),
+      background-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .navbar-mobile-context-item:hover,
+  .navbar-mobile-context-item.is-active {
+    color: var(--color-ink-950);
+    background-color: rgba(17, 17, 17, 0.05);
+  }
+
+  .navbar-actions {
+    flex: 1 1 0;
+    justify-content: flex-end;
+  }
+
+  .navbar-resume {
+    display: inline-flex;
+    min-height: 1.6rem;
+    padding-inline: 0.65rem;
+    font-size: 0.8rem;
+  }
 }
 
 /* Hero */
@@ -1420,7 +1407,7 @@ section[id] {
     display: inline-flex;
   }
 
-  .navbar-menu-button {
+  .navbar-mobile-context {
     display: none;
   }
 }
